@@ -1,0 +1,9 @@
+D:\code\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+D:\code\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+D:\code\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\open_ai_tetris_cn.csprojAssemblyReference.cache
+D:\code\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+D:\code\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+D:\code\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\open_ai_tetris_cn.csproj.GenerateResource.cache
+D:\code\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\open_ai_tetris_cn.csproj.CoreCompileInputs.cache
+D:\code\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+D:\code\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
