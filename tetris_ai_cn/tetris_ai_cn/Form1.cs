@@ -34,7 +34,7 @@ namespace tetris_ai_cn
 		/// <summary>
 		/// 当前分数
 		/// </summary>
-		int score = 0;
+		public static int score = 0;
 		/// <summary>
 		/// 初始化所有控件
 		/// </summary>
@@ -164,7 +164,7 @@ namespace tetris_ai_cn
 				if (curbrick.posnodes == null) curbrick.Canmove(curbrick.pos);
 				if (!curbrick.Dropmove())
 				{
-					Fillarr();
+					Fillarr(arr,curbrick.posnodes);
 					countrows = CountRow(arr);
 					Cleanrows(countrows);
 					curbrick = null;
@@ -177,7 +177,7 @@ namespace tetris_ai_cn
 		/// 清除已满的行，与CountRow配套使用
 		/// </summary>
 		/// <param name="countrows">List（int）类型，第一个参数是可消总行数，接下来项的则是可消行的y坐标，从大到小排列</param>
-		private void Cleanrows(List<int> countrows)
+		public static void Cleanrows(List<int> countrows)
 		{
 			countrows.RemoveAt(0);
 			foreach (int item in countrows)
@@ -190,9 +190,11 @@ namespace tetris_ai_cn
 		/// <summary>
 		/// 用于把板块写入背景图arr中，只有板块不能下落时才可以调用
 		/// </summary>
-		private void Fillarr()
+		/// <param name="arr">背景图矩阵，int型二维数组</param>
+		/// <param name="posnodes">以稀疏矩阵的方式存储每个方块对应背景矩阵arr的位置，List（Node）格式</param>
+		public static void Fillarr(int[,] arr, List<Node> posnodes)
 		{
-			foreach (Node item in curbrick.posnodes)
+			foreach (Node item in posnodes)
 			{
 				arr[item.x, item.y] = 1;
 			}
@@ -202,10 +204,12 @@ namespace tetris_ai_cn
 		/// </summary>
 		/// <param name="arr">一个二维数组</param>
 		/// <returns>List（int）类型，第一个参数是可消总行数，接下来的项则是可消行的y坐标，从大到小排列</returns>
-		public List<int> CountRow(int[,] arr)
+		public static List<int> CountRow(int[,] arr)
 		{
-			List<int> countrows = new List<int>();
-			countrows.Add(0);
+			List<int> countrows = new List<int>
+			{
+				0
+			};
 			bool isfull;
 			for (int i = rows - 1; i >= 0; i--)
 			{
@@ -221,7 +225,7 @@ namespace tetris_ai_cn
 				if (isfull)
 				{
 					countrows[0]++;
-					score++;
+					Form1.score++;
 					countrows.Add(i);
 				}
 			}

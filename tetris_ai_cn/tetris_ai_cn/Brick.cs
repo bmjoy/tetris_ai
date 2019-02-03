@@ -32,8 +32,8 @@ namespace tetris_ai_cn
 		public Brick()
 		{
 			Random random = new Random();
-			int index = random.Next(0, 49) / 7;
-			//int index = 0;
+			//int index = random.Next(0, 49) / 7;
+			int index = 0;
 			typenodes = new List<Node>();
 			Node node1, node2, node3, node4;
 			switch (index)
