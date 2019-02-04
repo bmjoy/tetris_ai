@@ -18,7 +18,7 @@ namespace tetris_ai_cn
 		/// </summary>
 		public static void AI_1()
 		{
-			
+
 		}
 
 		/// <summary>

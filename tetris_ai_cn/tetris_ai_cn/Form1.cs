@@ -26,7 +26,7 @@ namespace tetris_ai_cn
 		/// <summary>
 		/// 板块对象
 		/// </summary>
-		Brick curbrick;
+		public static Brick curbrick;
 		/// <summary>
 		/// 是否由AI控制
 		/// </summary>
