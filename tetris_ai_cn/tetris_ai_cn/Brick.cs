@@ -7,7 +7,7 @@ namespace tetris_ai_cn
 	public class Brick
 	{
 		/// <summary>
-		/// 说明板块类型
+		/// 说明板块类型，0田字形,1|字形,2T字形,3Z字形,4S字形,5J字形,6L字形
 		/// </summary>
 		public int type = 0;
 		/// <summary>
@@ -23,7 +23,7 @@ namespace tetris_ai_cn
 		/// </summary>
 		public Node pos = new Node
 		{
-			x = Form1.columns / 2,
+			x = Form1.columns / 2 - 1,
 			y = Form1.rows - 1
 		};
 		/// <summary>
@@ -33,7 +33,7 @@ namespace tetris_ai_cn
 		{
 			Random random = new Random();
 			int index = random.Next(0, 49) / 7;
-			//int index = 0;
+			//int index = 1;
 			typenodes = new List<Node>();
 			Node node1, node2, node3, node4;
 			switch (index)
@@ -125,7 +125,122 @@ namespace tetris_ai_cn
 			}
 		}
 		/// <summary>
-		/// 使板块逆时针旋转90度
+		/// 指定类型新建板块
+		/// </summary>
+		/// <param name="index">index整数，0~7分别代指一种板块类型，具体看type注释</param>
+		public Brick(int index)
+		{
+			typenodes = new List<Node>();
+			Node node1, node2, node3, node4;
+			switch (index)
+			{
+				case 0:
+					//田字形
+					type = 0;
+					node1 = new Node() { x = 0, y = 0 };
+					typenodes.Add(node1);
+					node2 = new Node() { x = 1, y = 0 };
+					typenodes.Add(node2);
+					node3 = new Node() { x = 1, y = -1 };
+					typenodes.Add(node3);
+					node4 = new Node() { x = 0, y = -1 };
+					typenodes.Add(node4);
+					break;
+				case 1:
+					//|字形
+					type = 1;
+					node1 = new Node() { x = 2, y = 0 };
+					typenodes.Add(node1);
+					node2 = new Node() { x = 1, y = 0 };
+					typenodes.Add(node2);
+					node3 = new Node() { x = 0, y = 0 };
+					typenodes.Add(node3);
+					node4 = new Node() { x = -1, y = 0 };
+					typenodes.Add(node4);
+					break;
+				case 2:
+					//T字形
+					type = 2;
+					node1 = new Node() { x = -1, y = 0 };
+					typenodes.Add(node1);
+					node2 = new Node() { x = 1, y = 0 };
+					typenodes.Add(node2);
+					node3 = new Node() { x = 0, y = 0 };
+					typenodes.Add(node3);
+					node4 = new Node() { x = 0, y = -1 };
+					typenodes.Add(node4);
+					break;
+				case 3:
+					//z字形
+					type = 3;
+					node1 = new Node() { x = 0, y = 0 };
+					typenodes.Add(node1);
+					node2 = new Node() { x = 0, y = -1 };
+					typenodes.Add(node2);
+					node3 = new Node() { x = 1, y = 0 };
+					typenodes.Add(node3);
+					node4 = new Node() { x = 1, y = 1 };
+					typenodes.Add(node4);
+					break;
+				case 4:
+					//s字形
+					type = 4;
+					node1 = new Node() { x = 0, y = 0 };
+					typenodes.Add(node1);
+					node2 = new Node() { x = 0, y = -1 };
+					typenodes.Add(node2);
+					node3 = new Node() { x = -1, y = 0 };
+					typenodes.Add(node3);
+					node4 = new Node() { x = -1, y = 1 };
+					typenodes.Add(node4);
+					break;
+				case 5:
+					//J字形
+					type = 5;
+					node1 = new Node() { x = 0, y = 2 };
+					typenodes.Add(node1);
+					node2 = new Node() { x = 0, y = 1 };
+					typenodes.Add(node2);
+					node3 = new Node() { x = 0, y = 0 };
+					typenodes.Add(node3);
+					node4 = new Node() { x = -1, y = 0 };
+					typenodes.Add(node4);
+					break;
+				case 6:
+					//L字形
+					type = 6;
+					node1 = new Node() { x = 0, y = 2 };
+					typenodes.Add(node1);
+					node2 = new Node() { x = 0, y = 1 };
+					typenodes.Add(node2);
+					node3 = new Node() { x = 0, y = 0 };
+					typenodes.Add(node3);
+					node4 = new Node() { x = 1, y = 0 };
+					typenodes.Add(node4);
+					break;
+			}
+		}
+		/// <summary>
+		/// 仅改变typenode来逆时针旋转，不考虑越界
+		/// </summary>
+		public void Rotate()
+		{
+			List<Node> new_typenodes = new List<Node>();
+			foreach (Node item in typenodes)
+				new_typenodes.Add(item.Trans());
+			typenodes = new_typenodes;
+		}
+		/// <summary>
+		/// 仅改变typenode来逆时针旋转，不考虑越界
+		/// </summary>
+		/// <param name="time">旋转次数</param>
+		public void Rotate(int time)
+		{
+			for (int i = 0; i < time; i++)
+				Rotate();
+		}
+		/// <summary>
+		/// 使板块逆时针旋转90度，只忽略背景图矩阵上界
 		/// </summary>
 		/// <returns>返回false表示旋转失败</returns>
 		public bool Transform()
@@ -135,25 +250,17 @@ namespace tetris_ai_cn
 			foreach (Node item in typenodes)
 			{
 				new_item = item.Trans() + pos;
-				if (new_item.y > Form1.rows - 1) continue;
-				if (new_item.x > Form1.columns - 1 || new_item.x < 0 || new_item.y < 0 || Form1.arr[new_item.x, new_item.y] == 1) return false;
-				new_posnodes.Add(new_item);
+
+				if (new_item.y <= Form1.rows - 1)
+				{
+					if (new_item.x > Form1.columns - 1 || new_item.x < 0 || new_item.y < 0 || Form1.arr[new_item.x, new_item.y] == 1) return false;
+					new_posnodes.Add(new_item);
+				}
 				new_typenodes.Add(item.Trans());
 			}
 			posnodes = new_posnodes;
 			typenodes = new_typenodes;
 			return true;
-		}
-		/// <summary>
-		/// 使板块逆时针旋转90度
-		/// </summary>
-		/// <param name="rotatetime">旋转次数</param>
-		/// <returns>返回false表示旋转失败</returns>
-		public bool Transform(int rotatetime)
-		{
-			bool can = true;
-			for (int i = 0; i < rotatetime && can == true; i++) can = Transform();
-			return can;
 		}
 		/// <summary>
 		/// 尝试左移，如能就左移

@@ -16,3 +16,12 @@ D:\code\GH\tetris_ai\tetris_ai_cn\tetris_ai_cn\obj\Debug\tetris_ai_cn.csproj.Gen
 D:\code\GH\tetris_ai\tetris_ai_cn\tetris_ai_cn\obj\Debug\tetris_ai_cn.csproj.CoreCompileInputs.cache
 D:\code\GH\tetris_ai\tetris_ai_cn\tetris_ai_cn\obj\Debug\tetris_ai_cn.exe
 D:\code\GH\tetris_ai\tetris_ai_cn\tetris_ai_cn\obj\Debug\tetris_ai_cn.pdb
+D:\code\tetris_ai_cn\tetris_ai_cn\bin\Debug\tetris_ai_cn.exe
+D:\code\tetris_ai_cn\tetris_ai_cn\bin\Debug\tetris_ai_cn.pdb
+D:\code\tetris_ai_cn\tetris_ai_cn\obj\Debug\tetris_ai_cn.csprojAssemblyReference.cache
+D:\code\tetris_ai_cn\tetris_ai_cn\obj\Debug\tetris_ai_cn.Form1.resources
+D:\code\tetris_ai_cn\tetris_ai_cn\obj\Debug\tetris_ai_cn.Properties.Resources.resources
+D:\code\tetris_ai_cn\tetris_ai_cn\obj\Debug\tetris_ai_cn.csproj.GenerateResource.cache
+D:\code\tetris_ai_cn\tetris_ai_cn\obj\Debug\tetris_ai_cn.csproj.CoreCompileInputs.cache
+D:\code\tetris_ai_cn\tetris_ai_cn\obj\Debug\tetris_ai_cn.exe
+D:\code\tetris_ai_cn\tetris_ai_cn\obj\Debug\tetris_ai_cn.pdb
