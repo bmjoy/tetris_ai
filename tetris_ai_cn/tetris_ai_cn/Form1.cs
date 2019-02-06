@@ -54,8 +54,8 @@ namespace tetris_ai_cn
 			InitializeComponent();
 			pictureBox1.Size = new Size(24 * columns + 4, 24 * rows + 4);
 			label2.Text = "当前分数：" + score + "分";
-			timer1.Enabled = false;			
-			textBox1.Text = "准备就绪";
+			timer1.Enabled = false;
+			textBox1.Text = "准备就绪，" + Environment.NewLine + "上方向键旋转，左方向键左移，右方向键右移，下方向键加速下移";
 		}
 		/// <summary>
 		/// AI控制的入口函数，添加AI请在此注册
@@ -98,7 +98,7 @@ namespace tetris_ai_cn
 				{
 					if (arr[i, rows - 1] == 1)
 					{
-						timer1.Stop();						
+						timer1.Stop();
 						MessageBox.Show("游戏结束！");
 						return;
 					}
@@ -177,26 +177,26 @@ namespace tetris_ai_cn
 		/// </summary>
 		private void button1_Click(object sender, EventArgs e)
 		{
-			timer1.Stop();			
+			timer1.Stop();
 			arr = new int[columns, rows];
 			curbrick = null;
 			pictureBox1.Refresh();
 			score = 0;
-			timer1.Start();			
+			timer1.Start();
 		}
 		/// <summary>
 		/// 暂停
 		/// </summary>
 		private void button2_Click(object sender, EventArgs e)
 		{
-			timer1.Stop();			
+			timer1.Stop();
 		}
 		/// <summary>
 		///继续
 		/// </summary>
 		private void button3_Click(object sender, EventArgs e)
 		{
-			timer1.Start();			
+			timer1.Start();
 		}
 		/// <summary>
 		/// 控制下落快慢
