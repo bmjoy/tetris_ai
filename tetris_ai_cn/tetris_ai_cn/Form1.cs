@@ -301,5 +301,10 @@ namespace tetris_ai_cn
 			aichoose = 3;
 			textBox1.Text = "切换：三号AI，将不响应用户方向键";
 		}
+
+		private void button4_Click(object sender, EventArgs e)
+		{
+			textBox1.Text = "";
+		}
 	}
 }
