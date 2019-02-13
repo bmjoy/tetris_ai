@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 namespace tetris_ai_cn
 {
 	public class Brick
@@ -24,7 +22,7 @@ namespace tetris_ai_cn
 		public Node pos = new Node
 		{
 			x = Form1.columns / 2 - 1,
-			y = Form1.rows - 1
+			y = Form1.rows + 1
 		};
 		/// <summary>
 		/// 新建板块
@@ -250,7 +248,6 @@ namespace tetris_ai_cn
 			foreach (Node item in typenodes)
 			{
 				new_item = item.Trans() + pos;
-
 				if (new_item.y <= Form1.rows - 1)
 				{
 					if (new_item.x > Form1.columns - 1 || new_item.x < 0 || new_item.y < 0 || Form1.arr[new_item.x, new_item.y] == 1) return false;
@@ -295,9 +292,17 @@ namespace tetris_ai_cn
 			foreach (Node item in typenodes)
 			{
 				Node new_item = new_pos + item;
-				if (new_item.y > Form1.rows - 1) continue;
-				if (new_item.x > Form1.columns - 1 || new_item.x < 0 || new_item.y < 0 || Form1.arr[new_item.x, new_item.y] == 1) return false;
-				new_posnodes.Add(new_item);
+				//三边满足
+				if (new_item.x >= 0 && new_item.x < Form1.columns && new_item.y >= 0)
+				{
+					//上越界
+					if (new_item.y > Form1.rows - 1) continue;
+					//四边满足有重合
+					else if (Form1.arr[new_item.x, new_item.y] == 1) return false;
+					//四边满足无重合
+					else new_posnodes.Add(new_item);
+				}
+				else return false;
 			}
 			posnodes = new_posnodes;
 			return true;

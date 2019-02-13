@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 namespace tetris_ai_cn
 {
@@ -23,7 +19,7 @@ namespace tetris_ai_cn
 		/// <summary>
 		/// 背景图矩阵，存放0无方块，1有方块
 		/// </summary>
-		public static int[,] arr;
+		public static double[,] arr;
 		/// <summary>
 		/// 板块对象
 		/// </summary>
@@ -44,13 +40,17 @@ namespace tetris_ai_cn
 		/// 防止AI重复判断
 		/// </summary>
 		bool aihasdecided = false;
+		/// <summary>
+		/// 控制AI训练和测试
+		/// </summary>
+		bool aiistraining = false;
 		//函数区
 		/// <summary>
 		/// 初始化所有控件
 		/// </summary>
 		public Form1()
 		{
-			arr = new int[columns, rows];
+			arr = new double[columns, rows];
 			InitializeComponent();
 			pictureBox1.Size = new Size(24 * columns + 4, 24 * rows + 4);
 			label2.Text = "当前分数：" + score + "分";
@@ -68,6 +68,7 @@ namespace tetris_ai_cn
 				case 1: AI_1(); break;
 				case 2: AI_2(); break;
 				case 3: AI_3(); break;
+				case 4: AI_4(); break;
 				default: break;
 			}
 		}
@@ -118,7 +119,7 @@ namespace tetris_ai_cn
 		/// </summary>
 		/// <param name="arr">背景图矩阵，int型二维数组</param>
 		/// <param name="posnodes">以稀疏矩阵的方式存储每个方块对应背景矩阵arr的位置，List（Node）格式</param>
-		public void Fillarr(int[,] arr, List<Node> posnodes)
+		public void Fillarr(double[,] arr, List<Node> posnodes)
 		{
 			foreach (Node item in posnodes)
 			{
@@ -130,7 +131,7 @@ namespace tetris_ai_cn
 		/// </summary>
 		/// <param name="arr">一个二维数组</param>
 		/// <returns>List（int）类型，第一个参数是可消总行数，接下来的项则是可消行的y坐标，从大到小排列</returns>
-		public List<int> CountRow(int[,] arr)
+		public List<int> CountRow(double[,] arr)
 		{
 			List<int> countrows = new List<int>
 			{
@@ -178,11 +179,12 @@ namespace tetris_ai_cn
 		private void button1_Click(object sender, EventArgs e)
 		{
 			timer1.Stop();
-			arr = new int[columns, rows];
+			arr = new double[columns, rows];
 			curbrick = null;
 			pictureBox1.Refresh();
 			score = 0;
 			timer1.Start();
+			groupBox3.Enabled = !timer1.Enabled;
 		}
 		/// <summary>
 		/// 暂停
@@ -190,6 +192,7 @@ namespace tetris_ai_cn
 		private void button2_Click(object sender, EventArgs e)
 		{
 			timer1.Stop();
+			groupBox3.Enabled = !timer1.Enabled;
 		}
 		/// <summary>
 		///继续
@@ -197,6 +200,7 @@ namespace tetris_ai_cn
 		private void button3_Click(object sender, EventArgs e)
 		{
 			timer1.Start();
+			groupBox3.Enabled = !timer1.Enabled;
 		}
 		/// <summary>
 		/// 控制下落快慢
@@ -301,10 +305,67 @@ namespace tetris_ai_cn
 			aichoose = 3;
 			textBox1.Text = "切换：三号AI，将不响应用户方向键";
 		}
-
+		/// <summary>
+		/// 清空输出
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void button4_Click(object sender, EventArgs e)
 		{
 			textBox1.Text = "";
+			textBox2.Text = "";
+		}
+		/// <summary>
+		/// 选择四号AI
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void radioButton5_CheckedChanged(object sender, EventArgs e)
+		{
+			aichoose = 4;
+			checkBox1.Enabled = true;
+			textBox1.Text = "切换：四号AI，将不响应用户方向键";
+			trainumber = 0;
+		}
+		/// <summary>
+		/// 是否训练AI
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void checkBox1_CheckedChanged(object sender, EventArgs e)
+		{
+			aiistraining = !aiistraining;
+			trainumber = 0;
+			groupBox2.Enabled = checkBox1.Checked;
+		}
+		/// <summary>
+		/// 设置训练值
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void button5_Click(object sender, EventArgs e)
+		{
+			batch = int.Parse(textBox3.Text);
+			rate = (double)decimal.Parse(textBox4.Text);
+			textBox1.Text += Environment.NewLine + "设置成功!" + "设置batch:" + batch + "设置rate:" + rate;
+		}
+		/// <summary>
+		/// 储存数据到xml
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void button6_Click(object sender, EventArgs e)
+		{
+			WriteXml();
+		}
+		/// <summary>
+		/// 从xml还原数据
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void button7_Click(object sender, EventArgs e)
+		{
+			ReadXml();
 		}
 	}
 }
