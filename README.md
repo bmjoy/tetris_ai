@@ -8,6 +8,7 @@ C#俄罗斯方块，带大量中文注释，便于AI接口和魔改(｀・ω・�
 运行环境 Windows && .NET Framework 4+
 
 ------------
+2019.2.14更新：主要的俄罗斯方块代码在/tetris_ai_cn文件夹下，/showarrincolor文件夹是把数组可视化的一个小工具，/huge_data文件夹下含有尝试全连接AI和小工具产生的大量数据。
 
  2019.2.6更新：[tetris_ai_cn.exe](./tetris_ai_cn.exe)，已经有三个AI啦~虽然都是PD算法
 
