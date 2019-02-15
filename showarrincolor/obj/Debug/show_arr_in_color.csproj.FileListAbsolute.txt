@@ -1,9 +1,0 @@
-D:\code\tetris_ai_cn\showarrincolor\bin\Debug\showarrincolor.exe
-D:\code\tetris_ai_cn\showarrincolor\bin\Debug\showarrincolor.pdb
-D:\code\tetris_ai_cn\showarrincolor\obj\Debug\show_arr_in_color.csprojAssemblyReference.cache
-D:\code\tetris_ai_cn\showarrincolor\obj\Debug\showarrincolor.Form1.resources
-D:\code\tetris_ai_cn\showarrincolor\obj\Debug\showarrincolor.Properties.Resources.resources
-D:\code\tetris_ai_cn\showarrincolor\obj\Debug\show_arr_in_color.csproj.GenerateResource.cache
-D:\code\tetris_ai_cn\showarrincolor\obj\Debug\show_arr_in_color.csproj.CoreCompileInputs.cache
-D:\code\tetris_ai_cn\showarrincolor\obj\Debug\showarrincolor.exe
-D:\code\tetris_ai_cn\showarrincolor\obj\Debug\showarrincolor.pdb

@@ -172,11 +172,11 @@ namespace tetris_ai_cn
 		/// <summary>
 		/// 储存数据到xml
 		/// </summary>
-		public void WriteXml()
+		public void WriteXml(string str = "")
 		{
 			//创建一个数据集，将其写入xml文件
 			//string filename = DateTime.Now.ToString("yyyyMMddHHmmss") + "model.xml";
-			string filename = "\\model.xml";
+			string filename = "\\model" + str + ".xml";
 			System.Data.DataSet ds = new System.Data.DataSet("MODEL");
 			System.Data.DataTable table = new System.Data.DataTable("w");
 			ds.Tables.Add(table);

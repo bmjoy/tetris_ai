@@ -78,6 +78,7 @@ namespace tetris_ai_cn
 		/// </summary>
 		private void timer1_Tick(object sender, EventArgs e)
 		{
+			if (trainumber > 600) timer1.Stop();
 			Cleanrows(countrows);
 			countrows = new List<int> { 0 };
 			if (curbrick == null)
@@ -112,6 +113,7 @@ namespace tetris_ai_cn
 				}
 				pictureBox1.Refresh();
 				label2.Text = "当前分数：" + score + "分";
+				if (trainumber > 600) timer1.Stop();
 			}
 		}
 		/// <summary>
@@ -185,6 +187,9 @@ namespace tetris_ai_cn
 			score = 0;
 			timer1.Start();
 			groupBox3.Enabled = !timer1.Enabled;
+			w = new double[2, 200];
+			w0 = new double[2, 1];
+			b = new double[2, 1];
 		}
 		/// <summary>
 		/// 暂停
@@ -323,8 +328,8 @@ namespace tetris_ai_cn
 		private void radioButton5_CheckedChanged(object sender, EventArgs e)
 		{
 			aichoose = 4;
-			checkBox1.Enabled = true;
-			textBox1.Text = "切换：四号AI，将不响应用户方向键";
+			checkBox1.Enabled = !checkBox1.Enabled;
+			textBox1.Text = "切换：四号AI，将不响应用户方向键，可进入训练模式";
 			trainumber = 0;
 		}
 		/// <summary>

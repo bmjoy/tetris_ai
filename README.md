@@ -8,9 +8,10 @@ C#俄罗斯方块，带大量中文注释，便于AI接口和魔改(｀・ω・�
 运行环境 Windows && .NET Framework 4+
 
 ------------
-2019.2.14更新：主要的俄罗斯方块代码在/tetris_ai_cn文件夹下，/showarrincolor文件夹是把数组可视化的一个小工具，/huge_data文件夹下含有尝试全连接AI和小工具产生的大量数据。
+## 更新说明
+- 2019.2.14更新：版本1.3, 主要的俄罗斯方块代码在 tetris_ai_cn 文件夹下, [showarrincolor](https://github.com/grdaimap/scaling-potato/tree/master/showarrincolor) (位于grdaimap另一开源库) 是把数组可视化的一个小工具，[huge_data.zip](./releases/tag/v1.3) 位于 releases/tag/v1.3 含有尝试全连接AI和小工具产生的大量数据。注意开源代码仍然不包括AI的实现函数。
 
- 2019.2.6更新：[tetris_ai_cn.exe](./tetris_ai_cn.exe)，已经有三个AI啦~虽然都是PD算法
+ - 2019.2.6更新：版本1.0, [tetris_ai_cn.exe](https://github.com/grdaimap/tetris_ai/releases/tag/v1.0)，已经有三个AI啦~虽然都是PD算法
 
 **方向键左、右、下控制板块向左、向右、向下，方向键上使板块变形**
 
@@ -20,10 +21,14 @@ C#俄罗斯方块，带大量中文注释，便于AI接口和魔改(｀・ω・�
 
 如果这么详细的注释看不懂，(｀・ω・´) <del>吔shi啦你</del>
 
-![界面动画](./1.gif)
-![界面截图](./1.png)
-![界面截图](./2.png)
-![界面截图](./3.png)
+![界面动画](./pictures/1.gif)
+
+> 添加AI训练，并可以保存数据到xml后
+![界面截图](./pictures/1.png)
+
+>代码截图0.8
+![界面截图](./pictures/2.png)
+![界面截图](./pictures/3.png)
 
 
 ***代码已经更改过了，截图仅供示意***
@@ -106,3 +111,12 @@ AI算法主要是评分函数: 所以只介绍评分函数
 
 -----------------
 最后提一句，这里坑真多！先仔细阅读PD算法说明，注意“插空”与否，随时提防越界和null和bug！(￣▽￣)／
+
+----------------------
+## 2019.2.15更新
+
+### 尝试训练全连接网络
+
+>batch: 100, rate: 1;
+
+![界面动画](./pictures/5.gif)
