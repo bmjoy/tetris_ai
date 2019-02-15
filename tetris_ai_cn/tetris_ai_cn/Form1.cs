@@ -78,7 +78,6 @@ namespace tetris_ai_cn
 		/// </summary>
 		private void timer1_Tick(object sender, EventArgs e)
 		{
-			if (trainumber > 600) timer1.Stop();
 			Cleanrows(countrows);
 			countrows = new List<int> { 0 };
 			if (curbrick == null)
@@ -113,7 +112,6 @@ namespace tetris_ai_cn
 				}
 				pictureBox1.Refresh();
 				label2.Text = "当前分数：" + score + "分";
-				if (trainumber > 600) timer1.Stop();
 			}
 		}
 		/// <summary>
