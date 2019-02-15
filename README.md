@@ -9,7 +9,7 @@ C#俄罗斯方块，带大量中文注释，便于AI接口和魔改(｀・ω・�
 
 ------------
 ## 更新说明
-- 2019.2.14更新：版本1.3, 主要的俄罗斯方块代码在 tetris_ai_cn 文件夹下, [showarrincolor](https://github.com/grdaimap/scaling-potato/tree/master/showarrincolor) (位于grdaimap另一开源库) 是把数组可视化的一个小工具，[huge_data.zip](https://github.com/grdaimap/tetris_ai/releases/tag/v1.3) 位于 releases/tag/v1.3 含有尝试全连接AI和小工具产生的大量数据。注意开源代码仍然不包括AI的实现函数。
+- 2019.2.14更新：版本1.3, 主要的俄罗斯方块代码在 tetris_ai_cn 文件夹下, [showarrincolor](https://github.com/grdaimap/scaling-potato/tree/master/showarrincolor) (位于grdaimap另一开源库) 是把数组可视化的一个小工具，注意开源代码仍然不包括AI的实现函数。
 
  - 2019.2.6更新：版本1.0, [tetris_ai_cn.exe](https://github.com/grdaimap/tetris_ai/releases/tag/v1.0)，已经有三个AI啦~虽然都是PD算法
 
