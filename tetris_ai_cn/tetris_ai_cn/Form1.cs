@@ -74,7 +74,7 @@ namespace tetris_ai_cn
 		}
 		//以下不建议修改
 		/// <summary>
-		/// 定时自动下落
+		/// 定时自动下落,相当于main函数，游戏主进程
 		/// </summary>
 		private void timer1_Tick(object sender, EventArgs e)
 		{
