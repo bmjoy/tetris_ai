@@ -65,6 +65,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Brick.cs" />
+    <Compile Include="Cell.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
